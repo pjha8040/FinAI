@@ -1,35 +1,52 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
-import './App.css'
+import { useState } from "react";
+import { GoogleGenerativeAI } from "@google/generative-ai";
+import "./App.css";
+
+const genAI = new GoogleGenerativeAI("AIzaSyD_oKms5SqcCrdv8KHNikxSBpdVghNkT40");
+const model = genAI.getGenerativeModel({ model: "gemini-1.5-flash" });
 
 function App() {
-  const [count, setCount] = useState(0)
+  const [text, setText] = useState("");
+  const [output, setOutput] = useState("");
+
+  const handleSubmit = async () => {
+    if (!text) return alert("Please enter a prompt!");
+
+    try {
+      const result = await model.generateContent(text);
+      const response = await result.response;
+      const finalText = response.text();
+
+      setOutput(finalText || "No response received.");
+    } catch (error) {
+      console.error("Error fetching response:", error);
+      setOutput("Error fetching response.");
+    }
+  };
 
   return (
-    <>
-      <div>
-        <a href="https://vite.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
+    <div className="container">
+      <div className="main">
+        <input
+          type="text"
+          name="user-prompt"
+          id="userPrompt"
+          value={text}
+          onChange={(e) => setText(e.target.value)}
+          placeholder="Enter your prompt..."
+        />
+        <button onClick={handleSubmit}>Go</button>
       </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.jsx</code> and save to test HMR
-        </p>
+      <div className="ans">
+        <textarea
+          name="finalAns"
+          value={output}
+          readOnly
+          placeholder="Response will appear here..."
+        />
       </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
-    </>
-  )
+    </div>
+  );
 }
 
-export default App
+export default App;
