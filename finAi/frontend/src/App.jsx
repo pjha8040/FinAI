@@ -1,51 +1,30 @@
-import { useState } from "react";
-import { GoogleGenerativeAI } from "@google/generative-ai";
-import "./App.css";
-
-const genAI = new GoogleGenerativeAI("AIzaSyD_oKms5SqcCrdv8KHNikxSBpdVghNkT40");
-const model = genAI.getGenerativeModel({ model: "gemini-1.5-flash" });
-
+import React from "react";
+import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import HomePage from "./Pages/Home";
+import Login from "./Pages/Login";
+import Signup from "./Pages/Signup";
+import Preferences from "./Pages/Prefrences";
+import ChatBot from "./Pages/ChatBot";
+import { useState, useEffect } from "react";
 function App() {
-  const [text, setText] = useState("");
-  const [output, setOutput] = useState("");
+  const [theme, setTheme] = useState(localStorage.getItem("theme") || "light");
 
-  const handleSubmit = async () => {
-    if (!text) return alert("Please enter a prompt!");
-
-    try {
-      const result = await model.generateContent(text);
-      const response = await result.response;
-      const finalText = response.text();
-
-      setOutput(finalText || "No response received.");
-    } catch (error) {
-      console.error("Error fetching response:", error);
-      setOutput("Error fetching response.");
-    }
-  };
-
+  // Apply theme globally
+  useEffect(() => {
+    document.documentElement.setAttribute("data-theme", theme);
+  }, [theme]);
   return (
-    <div className="container">
-      <div className="main">
-        <input
-          type="text"
-          name="user-prompt"
-          id="userPrompt"
-          value={text}
-          onChange={(e) => setText(e.target.value)}
-          placeholder="Enter your prompt..."
-        />
-        <button onClick={handleSubmit}>Go</button>
+    <Router basename={"/"}>
+      <div className="min-h-screen bg-base-100 text-base-content">
+        <Routes>
+          <Route path="/" element={<HomePage />} />
+          <Route path="/login" element={<Login/>} />
+          <Route path="/signup" element={<Signup/>} />
+          <Route path="/preferences" element={<Preferences/>} />
+          <Route path="/chatbot" element={<ChatBot/>} />
+        </Routes>
       </div>
-      <div className="ans">
-        <textarea
-          name="finalAns"
-          value={output}
-          readOnly
-          placeholder="Response will appear here..."
-        />
-      </div>
-    </div>
+    </Router>
   );
 }
 
