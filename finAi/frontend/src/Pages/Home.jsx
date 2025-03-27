@@ -1,83 +1,76 @@
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
-import ChatBot from "../Pages/ChatBot";
-const HomePage = () => {
-    const [isSettingsOpen, setIsSettingsOpen] = useState(false);
 
+const HomePage = () => {
     return (
-        <div className="min-h-screen bg-gradient-to-b from-blue-900 to-blue-600 text-white">
+        <div className="min-h-screen bg-base-100 text-base-content">
+            
             {/* Navbar */}
-            <nav className="bg-blue-800 bg-opacity-80 shadow-lg py-4 fixed w-full z-10 backdrop-blur-lg">
-                <div className="max-w-7xl mx-auto px-6 flex justify-between items-center">
-                    <h1 className="text-2xl font-extrabold tracking-wide">ChatBot AI</h1>
-                    <div className="relative">
-                        <a href="#" className="mx-4 hover:text-blue-300 transition">Features</a>
-                        <a href="#" className="mx-4 hover:text-blue-300 transition">Pricing</a>
-                        <a href="#" className="mx-4 hover:text-blue-300 transition">Contact</a>
+            <div className="navbar bg-base-200 shadow-md fixed w-full z-10">
+                <div className="container mx-auto px-6 flex justify-between">
+                    <Link to="/" className="text-2xl font-bold">ChatBot AI</Link>
+                    
+                    <div className="flex items-center gap-4">
+                        <Link to="#" className="btn btn-ghost">Features</Link>
+                        <Link to="#" className="btn btn-ghost">Pricing</Link>
+                        <Link to="#" className="btn btn-ghost">Contact</Link>
 
                         {/* Settings Dropdown */}
-                        <div className="inline-block relative">
-                            <button
-                                onClick={() => setIsSettingsOpen(!isSettingsOpen)}
-                                className="mx-4 hover:text-blue-300 transition focus:outline-none"
-                            >
+                        <div className="dropdown dropdown-end">
+                            <label tabIndex={0} className="btn btn-ghost">
                                 Settings ▼
-                            </button>
-                            {isSettingsOpen && (
-                                <div className="absolute right-0 mt-2 w-40 bg-white text-blue-900 rounded-lg shadow-lg overflow-hidden">
-                                    <a href="/profile" className="block px-4 py-2 hover:bg-blue-100">Profile</a>
-                                    <a href="/preferences" className="block px-4 py-2 hover:bg-blue-100">Preferences</a>
-                                    <a href="/logout" className="block px-4 py-2 hover:bg-blue-100">Logout</a>
-                                </div>
-                            )}
+                            </label>
+                            <ul tabIndex={0} className="dropdown-content menu p-2 shadow bg-base-200 rounded-lg w-40">
+                                <li><Link to="/profile">Profile</Link></li>
+                                <li><Link to="/preferences">Preferences</Link></li>
+                                <li><Link to="/logout">Logout</Link></li>
+                            </ul>
                         </div>
 
-                        <a href="/login" className="ml-6 px-4 py-2 bg-blue-500 rounded-lg hover:bg-blue-400 transition shadow-md">
-                            Login
-                        </a>
+                        <Link to="/login" className="btn btn-primary">Login</Link>
                     </div>
                 </div>
-            </nav>
+            </div>
 
             {/* Hero Section */}
-            <header className="text-center py-32 px-6">
-                <h2 className="text-5xl font-bold">Your AI-Powered Financial Assistant</h2>
-                <p className="mt-4 text-lg text-blue-200 max-w-2xl mx-auto">
-                    Ask questions, get real-time insights, and make better financial decisions effortlessly.
-                </p>
-                <Link to="/chatbot">
-                    <button className="bg-blue-500 hover:bg-blue-600 text-white font-semibold py-3 px-6 rounded-lg shadow-lg transition">
-                        Get Started
-                    </button>
-                </Link>
-            </header>
+            <section className="hero min-h-screen flex items-center justify-center text-center">
+                <div className="max-w-2xl">
+                    <h2 className="text-5xl font-bold">Your AI-Powered Financial Assistant</h2>
+                    <p className="mt-4 text-lg opacity-70">
+                        Ask questions, get real-time insights, and make better financial decisions effortlessly.
+                    </p>
+                    <Link to="/chatbot">
+                        <button className="btn btn-primary mt-6">Get Started</button>
+                    </Link>
+                </div>
+            </section>
 
             {/* Features Section */}
-            <section className="max-w-6xl mx-auto py-20 px-6 grid md:grid-cols-3 gap-8">
+            <section className="container mx-auto py-16 grid md:grid-cols-3 gap-8">
                 {[
                     { title: "Personalized Advice", text: "Get tailored insights based on your queries." },
                     { title: "Real-time Data", text: "Stay updated with live financial trends." },
                     { title: "Secure & Private", text: "Your financial data is encrypted and protected." },
                 ].map((feature, index) => (
-                    <div key={index} className="bg-white bg-opacity-10 backdrop-blur-lg p-6 rounded-lg shadow-lg transition transform hover:-translate-y-2">
-                        <h3 className="text-xl font-semibold text-blue-100">{feature.title}</h3>
-                        <p className="mt-2 text-blue-200">{feature.text}</p>
+                    <div key={index} className="card bg-base-200 shadow-lg p-6">
+                        <h3 className="text-xl font-semibold">{feature.title}</h3>
+                        <p className="mt-2 opacity-70">{feature.text}</p>
                     </div>
                 ))}
             </section>
 
             {/* CTA Section */}
-            <section className="text-center py-16 bg-blue-800 bg-opacity-80">
+            <section className="text-center py-16 bg-base-200">
                 <h2 className="text-3xl font-bold">Start Your Financial Journey Today</h2>
-                <p className="mt-2 text-blue-300">Join thousands of users making smarter investments.</p>
-                <a href="/sign-up" className="mt-6 inline-block bg-white text-blue-700 px-6 py-3 rounded-lg text-lg font-semibold shadow-lg hover:bg-blue-200 transition">
-                    Sign Up Now
-                </a>
+                <p className="mt-2 opacity-70">Join thousands of users making smarter investments.</p>
+                <Link to="/sign-up">
+                    <button className="btn btn-secondary mt-6">Sign Up Now</button>
+                </Link>
             </section>
 
             {/* Footer */}
-            <footer className="text-center py-6 bg-blue-900">
-                <p className="text-blue-300">&copy; 2025 ChatBot AI. All rights reserved.</p>
+            <footer className="footer bg-base-300 py-6 text-center">
+                <p>&copy; 2025 ChatBot AI. All rights reserved.</p>
             </footer>
         </div>
     );

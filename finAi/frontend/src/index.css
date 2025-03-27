@@ -1,4 +1,50 @@
 @import "tailwindcss";
 @plugin "daisyui";
+@plugin "daisyui/theme" {
+  name: "blue"; /* Custom Blue Theme */
+  default: True; /* Do not set as default */
+  prefersdark: false;
+  color-scheme: light;
+
+  /* Base Colors */
+  --color-base-100: oklch(10% 0.05 240); /* Deep Dark Blue */
+  --color-base-200: oklch(15% 0.06 240); /* Slightly Lighter */
+  --color-base-300: oklch(25% 0.08 240); /* Soft Dark Blue */
+  --color-base-content: oklch(95% 0.02 240); /* Light Text */
+
+  /* Primary Colors */
+  --color-primary: oklch(55% 0.3 240); /* Vibrant Blue */
+  --color-primary-content: oklch(98% 0.01 240); /* White Text */
+
+  /* Secondary Colors */
+  --color-secondary: oklch(60% 0.2 220); /* Soft Blue */
+  --color-secondary-content: oklch(98% 0.02 220);
+
+  /* Accent Colors */
+  --color-accent: oklch(50% 0.3 210); /* Dark Cyan */
+  --color-accent-content: oklch(98% 0.02 210);
+
+  /* Neutral Colors */
+  --color-neutral: oklch(30% 0.1 240); /* Dark Blue-Gray */
+  --color-neutral-content: oklch(98% 0.02 240);
+
+  /* Info, Success, Warning, Error */
+  --color-info: oklch(65% 0.2 220);
+  --color-success: oklch(55% 0.25 160);
+  --color-warning: oklch(80% 0.3 50);
+  --color-error: oklch(60% 0.3 10);
+
+  /* Border Radius */
+  --radius-selector: 1rem;
+  --radius-field: 0.25rem;
+  --radius-box: 0.5rem;
+
+  /* Other Styling */
+  --border: 1px;
+  --depth: 1;
+  --noise: 0;
+}
 @plugin "daisyui" {
     themes: all;}
+  
+
