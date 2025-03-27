@@ -9,7 +9,7 @@ const HomePage = () => {
       {/* Navbar */}
       <nav className="bg-blue-800 bg-opacity-80 shadow-lg py-4 fixed w-full z-10 backdrop-blur-lg">
         <div className="max-w-7xl mx-auto px-6 flex justify-between items-center">
-          <h1 className="text-2xl font-extrabold tracking-wide">FinAI</h1>
+          <h1 className="text-2xl font-extrabold tracking-wide">ChatBot AI</h1>
           <div className="relative">
             <a href="#" className="mx-4 hover:text-blue-300 transition">
               Features
@@ -68,12 +68,12 @@ const HomePage = () => {
         <h2 className="text-5xl font-bold">
           Your AI-Powered Financial Assistant
         </h2>
-        <p className="mt-4 text-lg text-blue-200 max-w-2xl mx-auto my-5">
+        <p className="mt-4 text-lg text-blue-200 max-w-2xl mx-auto">
           Ask questions, get real-time insights, and make better financial
           decisions effortlessly.
         </p>
         <Link to="/chatbot">
-          <button className="bg-blue-500 hover:bg-blue-600 text-white font-semibold py-3 px-6 rounded-lg shadow-lg transition cursor-pointer">
+          <button className="bg-blue-500 hover:bg-blue-600 text-white font-semibold py-3 px-6 rounded-lg shadow-lg transition">
             Get Started
           </button>
         </Link>
@@ -99,10 +99,10 @@ const HomePage = () => {
             key={index}
             className="bg-white bg-opacity-10 backdrop-blur-lg p-6 rounded-lg shadow-lg transition transform hover:-translate-y-2"
           >
-            <h3 className="text-xl font-semibold text-black">
+            <h3 className="text-xl font-semibold text-blue-100">
               {feature.title}
             </h3>
-            <p className="mt-2 text-black">{feature.text}</p>
+            <p className="mt-2 text-blue-200">{feature.text}</p>
           </div>
         ))}
       </section>
