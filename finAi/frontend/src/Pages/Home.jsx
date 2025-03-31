@@ -33,7 +33,7 @@ const HomePage = () => {
             </div>
 
             {/* Hero Section */}
-            <section className="hero min-h-screen flex items-center justify-center text-center">
+            <section className="hero min-h-[65vh] flex items-center justify-center text-center">
                 <div className="max-w-2xl">
                     <h2 className="text-5xl font-bold">Your AI-Powered Financial Assistant</h2>
                     <p className="mt-4 text-lg opacity-70">
