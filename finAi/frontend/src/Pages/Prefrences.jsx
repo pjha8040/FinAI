@@ -9,7 +9,7 @@ const THEMES = [
 ];
 
 const Preferences = () => {
-  const [theme, setTheme] = useState(localStorage.getItem("theme") || "light");
+  const [theme, setTheme] = useState(localStorage.getItem("theme") || "Default");
 
   useEffect(() => {
     document.documentElement.setAttribute("data-theme", theme);
@@ -19,7 +19,7 @@ const Preferences = () => {
   return (
     <div className="min-h-screen bg-base-100 text-base-content p-8">
       <h1 className="text-3xl font-bold mb-4">Preferences</h1>
-      <p className="mb-6">Select a theme for your chatbot application:</p>
+      <p className="mb-6">Select a theme for your application:</p>
 
       {/* Theme Selection Grid */}
       <div className="grid grid-cols-4 sm:grid-cols-6 md:grid-cols-8 gap-2">

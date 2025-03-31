@@ -1,42 +1,44 @@
 @import "tailwindcss";
 @plugin "daisyui";
+@plugin "daisyui" {
+  themes: all;}
 @plugin "daisyui/theme" {
-  name: "blue"; /* Custom Blue Theme */
-  default: True; /* Do not set as default */
+  name: "Default"; /* Custom Elegant Blue Theme */
+  default: true;
   prefersdark: false;
   color-scheme: light;
 
-  /* Base Colors */
-  --color-base-100: oklch(10% 0.05 240); /* Deep Dark Blue */
-  --color-base-200: oklch(15% 0.06 240); /* Slightly Lighter */
-  --color-base-300: oklch(25% 0.08 240); /* Soft Dark Blue */
-  --color-base-content: oklch(95% 0.02 240); /* Light Text */
+  /* Base Colors - Soft, calming blue backgrounds */
+  --color-base-100: #f1f7fb; /* Very light blue/gray for primary background */
+  --color-base-200: #d9e7f1; /* Soft pastel blue */
+  --color-base-300: #c3d9e8; /* Muted blue for sections or cards */
+  --color-base-content: #273240; /* Dark slate for text, easier on the eyes */
 
-  /* Primary Colors */
-  --color-primary: oklch(55% 0.3 240); /* Vibrant Blue */
-  --color-primary-content: oklch(98% 0.01 240); /* White Text */
+  /* Primary Colors - Softer, less saturated blue accents */
+  --color-primary: #4a90e2; /* A gentle blue instead of a vivid blue */
+  --color-primary-content: #ffffff; /* White text remains for clarity */
 
-  /* Secondary Colors */
-  --color-secondary: oklch(60% 0.2 220); /* Soft Blue */
-  --color-secondary-content: oklch(98% 0.02 220);
+  /* Secondary Colors - Complementary soft blue */
+  --color-secondary: #6fb1e7; /* Lighter variant for secondary elements */
+  --color-secondary-content: #ffffff;
 
-  /* Accent Colors */
-  --color-accent: oklch(50% 0.3 210); /* Dark Cyan */
-  --color-accent-content: oklch(98% 0.02 210);
+  /* Accent Colors - Subtle teal for a refreshing touch */
+  --color-accent: #3ebfb0;  /* Muted teal accent */
+  --color-accent-content: #ffffff;
 
-  /* Neutral Colors */
-  --color-neutral: oklch(30% 0.1 240); /* Dark Blue-Gray */
-  --color-neutral-content: oklch(98% 0.02 240);
+  /* Neutral Colors - Calm, balanced gray-blue */
+  --color-neutral: #8a9aa1; /* A medium gray-blue tone */
+  --color-neutral-content: #ffffff;
 
-  /* Info, Success, Warning, Error */
-  --color-info: oklch(65% 0.2 220);
-  --color-success: oklch(55% 0.25 160);
-  --color-warning: oklch(80% 0.3 50);
-  --color-error: oklch(60% 0.3 10);
+  /* Additional States - Adjusted for gentle feedback */
+  --color-info: #3ebfb0;    /* Consistent with accent */
+  --color-success: #5cb85c; /* Gentle green */
+  --color-warning: #f0ad4e; /* Soft amber */
+  --color-error: #d9534f;   /* Muted red */
 
   /* Border Radius */
   --radius-selector: 1rem;
-  --radius-field: 0.25rem;
+  --radius-field: 0.375rem;
   --radius-box: 0.5rem;
 
   /* Other Styling */
@@ -44,7 +46,3 @@
   --depth: 1;
   --noise: 0;
 }
-@plugin "daisyui" {
-    themes: all;}
-  
-

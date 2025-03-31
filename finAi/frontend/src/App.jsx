@@ -7,7 +7,7 @@ import Preferences from "./Pages/Prefrences";
 import ChatBot from "./Pages/ChatBot";
 import { useState, useEffect } from "react";
 function App() {
-  const [theme, setTheme] = useState(localStorage.getItem("theme") || "light");
+  const [theme, setTheme] = useState(localStorage.getItem("theme") || "Default");
 
   // Apply theme globally
   useEffect(() => {
