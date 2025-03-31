@@ -44,11 +44,11 @@ const Login = () => {
         {/* Social Login Buttons */}
         <div className="flex gap-2">
           <button className="btn btn-outline flex-1 flex items-center justify-center gap-2">
-            <img src="https://upload.wikimedia.org/wikipedia/commons/5/53/Google_%22G%22_Logo.svg" alt="Google" className="w-5 h-5" />
+            <img src="Google_Icons-09-512.webp" alt="Google" className="w-5 h-5" />
             Google
           </button>
           <button className="btn btn-outline flex-1 flex items-center justify-center gap-2">
-            <img src="https://github.githubassets.com/images/modules/logos_page/GitHub-Mark.png" alt="GitHub" className="w-5 h-5" />
+            <img src="githublogo.png" alt="GitHub" className="w-5 h-5" />
             GitHub
           </button>
         </div>

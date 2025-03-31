@@ -21,6 +21,7 @@ export default function ChatBot() {
             console.error("Error fetching response:", error);
             setOutput("Error fetching response.");
         }
+        
     };
 
     return (

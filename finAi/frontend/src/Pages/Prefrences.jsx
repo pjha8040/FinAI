@@ -9,7 +9,7 @@ const THEMES = [
 ];
 
 const Preferences = () => {
-  const [theme, setTheme] = useState(localStorage.getItem("theme") || "light");
+  const [theme, setTheme] = useState(localStorage.getItem("theme") || "Default");
 
   useEffect(() => {
     document.documentElement.setAttribute("data-theme", theme);

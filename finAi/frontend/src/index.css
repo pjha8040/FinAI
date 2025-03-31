@@ -1,7 +1,7 @@
 @import "tailwindcss";
 @plugin "daisyui";
 @plugin "daisyui/theme" {
-  name: "blue"; /* Custom Blue Theme */
+  name: "Default"; /* Custom Blue Theme */
   default: True; /* Do not set as default */
   prefersdark: false;
   color-scheme: light;
