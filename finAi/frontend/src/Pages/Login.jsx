@@ -2,6 +2,10 @@ import React from "react";
 import { Link } from "react-router-dom";  
 
 const Login = () => {
+  handleSubmit = () => {
+    // Handle login logic here
+    console.log("Login button clicked");
+  }
   return (
     <div className="min-h-screen flex items-center justify-center bg-base-100 text-base-content">
       <div className="bg-base-200 shadow-lg rounded-xl p-8 max-w-sm w-full">
@@ -31,7 +35,7 @@ const Login = () => {
         </div>
 
         {/* Login Button */}
-        <button className="btn btn-primary w-full">Login</button>
+        <button onClick={handleSubmit()} className="btn btn-primary w-full">Login</button>
 
         {/* Forgot Password */}
         <p className="text-center text-sm mt-3">
