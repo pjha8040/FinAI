@@ -87,7 +87,7 @@ const HomePage = () => {
 
       {/* Footer */}
       <footer className="footer bg-base-300 py-6 text-center">
-        <p>&copy; 2025 ChatBot AI. All rights reserved.</p>
+        <p>&copy; 2025 FinAI. All rights reserved.</p>
       </footer>
     </div>
   );

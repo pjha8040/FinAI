@@ -128,7 +128,9 @@ export default function ChatBot() {
       </div>
 
       {/* Hidden Audio Player */}
-      <audio id="audio-player" controls style={{ display: "none" }}></audio>
+      <div className="audio1 mb-5 mx-4">
+        <audio id="audio-player" controls style={{ display: "none" }}></audio>
+      </div>
     </div>
   );
 }
