@@ -1,5 +1,6 @@
 import React, { useState, useRef, useEffect } from "react";
 import Navbar from "./components/Navbar";
+import { marked } from "marked";
 
 export default function ChatBot() {
   const [text, setText] = useState("");
@@ -32,8 +33,10 @@ export default function ChatBot() {
       const data = await response.json();
 
       let botText = data.text_response || "No response received.";
+      // Convert Markdown to HTML using marked
+      const parsedText = marked(botText);
       // Append bot's response to conversation
-      setConversation((prev) => [...prev, { sender: "bot", text: botText }]);
+      setConversation((prev) => [...prev, { sender: "bot", text: parsedText }]);
 
       // Handle audio response
       const audioPlayer = document.getElementById("audio-player");
@@ -69,47 +72,6 @@ export default function ChatBot() {
   };
 
   return (
-    // <div className="flex flex-col h-screen bg-base-100 text-base-content">
-    //       <Navbar/>
-
-    //   {/* Chat Conversation Area */}
-    //   <div className="flex-1 overflow-y-auto p-6 space-y-4">
-    //     {conversation.map((msg, index) => (
-    //       <div
-    //         key={index}
-    //         className={`chat ${msg.sender === "bot" ? "chat-start" : "chat-end"}`}
-    //       >
-    //         <div className="chat-bubble max-w-lg"
-    //           dangerouslySetInnerHTML={{ __html: msg.text }}>
-    //         </div>
-    //       </div>
-    //     ))}
-    //     <div ref={messagesEndRef} />
-    //   </div>
-
-    //   {/* Input Area */}
-    //   <div className="p-4 border-t border-base-300 border-rounded-lg max-w-[40vw] justify-self-center ">
-    //     <div className="flex space-x-2">
-    //       <input
-    //         type="text"
-    //         className="input input-bordered flex-1"
-    //         placeholder="Enter your query..."
-    //         value={text}
-    //         onChange={(e) => setText(e.target.value)}
-    //         onKeyDown={(e) => e.key === "Enter" && handleSubmit()}
-    //       />
-    //       <button
-    //         onClick={handleSubmit}
-    //         className={`btn btn-primary ${loading ? "loading" : ""}`}
-    //       >
-    //         Send
-    //       </button>
-    //     </div>
-    //   </div>
-
-    //   {/* Hidden Audio Player */}
-    //   <audio id="audio-player" controls style={{ display: "none" }}></audio>
-    // </div>
     <div className="flex flex-col h-screen bg-base-100 text-base-content">
       <Navbar />
 
@@ -126,14 +88,12 @@ export default function ChatBot() {
               <div
                 className="chat-bubble max-w-lg"
                 dangerouslySetInnerHTML={{ __html: msg.text }}
-              />
+              ></div>
             </div>
           ))
         ) : (
           <div className="flex justify-center items-center h-full">
-            <p className="text-lg text-base-content opacity-60">
-              Start a conversation 👇
-            </p>
+            <p className="text-lg opacity-60">Start a conversation 👇</p>
           </div>
         )}
         <div ref={messagesEndRef} />
@@ -168,9 +128,7 @@ export default function ChatBot() {
       </div>
 
       {/* Hidden Audio Player */}
-      <div className="audio1 mb-5 mx-8">
-        <audio id="audio-player" controls style={{ display: "none" }}></audio>
-      </div>
+      <audio id="audio-player" controls style={{ display: "none" }}></audio>
     </div>
   );
 }

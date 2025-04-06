@@ -56,16 +56,31 @@ import json
 from google.cloud import texttospeech
 from google.oauth2 import service_account
 from dotenv import load_dotenv
+import re
+
 
 load_dotenv()
 credentials_json = os.getenv("GOOGLE_CREDENTIALS")
+
+def strip_markdown(text):
+    """
+    Removes common markdown syntax such as asterisks, underscores,
+    backticks, and hash marks from the given text.
+    """
+    # Remove asterisks (*) and underscores (_)
+    text = re.sub(r'(\*|_){1,2}', '', text)
+    # Remove backticks (`) used for code formatting
+    text = re.sub(r'`{1,3}', '', text)
+    # Remove hash marks (#) used for headers
+    text = re.sub(r'^#+\s', '', text)
+    return text
 
 def generate_audio(text, output_file="response.mp3"):
     """Converts text response to an audio file"""
     try:
         if not credentials_json:
             raise ValueError("Google credentials not found in environment variables")
-            
+        text = strip_markdown(text)  # Clean the text before processing   
         credentials_dict = json.loads(credentials_json)
         credentials = service_account.Credentials.from_service_account_info(credentials_dict)
         client = texttospeech.TextToSpeechClient(credentials=credentials)
