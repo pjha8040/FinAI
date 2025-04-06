@@ -53,7 +53,7 @@ const Navbar = () => {
     <div className="navbar bg-base-200 shadow-lg fixed w-full z-10">
       <div className="flex-1">
         <Link to="/" className="btn btn-ghost normal-case text-xl">
-          ChatBot AI
+          FinAI
         </Link>
       </div>
       <div className="flex-none">
