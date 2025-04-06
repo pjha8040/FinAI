@@ -42,7 +42,6 @@
 
 // export default Navbar;
 
-
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
 
@@ -53,18 +52,18 @@ const Navbar = () => {
     <div className="navbar bg-base-200 shadow-lg fixed w-full z-10">
       <div className="flex-1">
         <Link to="/" className="btn btn-ghost normal-case text-xl">
-          ChatBot AI
+          FinAI
         </Link>
       </div>
       <div className="flex-none">
         <ul className="menu menu-horizontal p-0">
           <li>
-            <Link to="#" className="btn btn-ghost">
-              Features
+            <Link to="/market" className="btn btn-ghost">
+              Market Today
             </Link>
           </li>
           <li>
-            <Link to="#" className="btn btn-ghost">
+            <Link to="/pricing" className="btn btn-ghost">
               Pricing
             </Link>
           </li>

@@ -26,6 +26,8 @@ from dotenv import load_dotenv
 
 load_dotenv()
 
+now = "Engage with users in a conversational tone to explain complex financial concepts. Respond to user queries as if you're discussing the topic over coffee or while taking a walk. Use everyday examples, anecdotes, and metaphors to make the information relatable and easier to understand. When needed, offer additional context, definitions, or supporting data to help clarify and reinforce your explanations."
+
 GEMINI_API_KEY = os.getenv("GEMINI_API_KEY")
 genai.configure(api_key=GEMINI_API_KEY)
     
@@ -36,7 +38,7 @@ def get_financial_answer(user_query):
         model = genai.GenerativeModel(
             model_name='gemini-1.5-flash-001',  # Verified working model
             generation_config={
-                "temperature": 0.7,
+                "temperature": 0.9,
                 "max_output_tokens": 2048
             },
             safety_settings={
@@ -45,9 +47,10 @@ def get_financial_answer(user_query):
             }
         )
         response = model.generate_content(
-            f"You are a financial expert. Answer concisely: {user_query}"
+            f"{now} Answer concisely: {user_query}"
         )
         return response.text
+
     
     except Exception as e:
         print(f"API Error: {str(e)}")

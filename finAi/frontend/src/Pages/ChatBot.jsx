@@ -22,7 +22,7 @@ export default function ChatBot() {
     const userQuery = text;
     setText("");
     setLoading(true);
-    
+
     try {
       const response = await fetch("http://127.0.0.1:5000/chat", {
         method: "POST",
@@ -30,7 +30,7 @@ export default function ChatBot() {
         body: JSON.stringify({ query: userQuery }),
       });
       const data = await response.json();
-      
+
       let botText = data.text_response || "No response received.";
       // Append bot's response to conversation
       setConversation((prev) => [...prev, { sender: "bot", text: botText }]);
@@ -55,7 +55,10 @@ export default function ChatBot() {
           .join("<br/>");
         setConversation((prev) => [
           ...prev,
-          { sender: "bot", text: `<strong>YouTube Videos:</strong><br/>${videosHtml}` },
+          {
+            sender: "bot",
+            text: `<strong>YouTube Videos:</strong><br/>${videosHtml}`,
+          },
         ]);
       }
     } catch (error) {
@@ -76,7 +79,7 @@ export default function ChatBot() {
     //         key={index}
     //         className={`chat ${msg.sender === "bot" ? "chat-start" : "chat-end"}`}
     //       >
-    //         <div className="chat-bubble max-w-lg" 
+    //         <div className="chat-bubble max-w-lg"
     //           dangerouslySetInnerHTML={{ __html: msg.text }}>
     //         </div>
     //       </div>
@@ -108,62 +111,66 @@ export default function ChatBot() {
     //   <audio id="audio-player" controls style={{ display: "none" }}></audio>
     // </div>
     <div className="flex flex-col h-screen bg-base-100 text-base-content">
-    <Navbar />
+      <Navbar />
 
-    {/* Main Chat Area */}
-    <div className="flex-1 overflow-y-auto px-6 pt-6 space-y-4">
-      {conversation.length > 0 ? (
-        conversation.map((msg, index) => (
-          <div
-            key={index}
-            className={`chat ${msg.sender === "bot" ? "chat-start" : "chat-end"}`}
-          >
+      {/* Main Chat Area */}
+      <div className="flex-1 overflow-y-auto px-6 pt-6 space-y-4">
+        {conversation.length > 0 ? (
+          conversation.map((msg, index) => (
             <div
-              className="chat-bubble max-w-lg"
-              dangerouslySetInnerHTML={{ __html: msg.text }}
-            />
+              key={index}
+              className={`chat ${
+                msg.sender === "bot" ? "chat-start" : "chat-end"
+              }`}
+            >
+              <div
+                className="chat-bubble max-w-lg"
+                dangerouslySetInnerHTML={{ __html: msg.text }}
+              />
+            </div>
+          ))
+        ) : (
+          <div className="flex justify-center items-center h-full">
+            <p className="text-lg text-base-content opacity-60">
+              Start a conversation 👇
+            </p>
           </div>
-        ))
-      ) : (
-        <div className="flex justify-center items-center h-full">
-          <p className="text-lg text-base-content opacity-60">
-            Start a conversation 👇
-          </p>
-        </div>
-      )}
-      <div ref={messagesEndRef} />
-    </div>
+        )}
+        <div ref={messagesEndRef} />
+      </div>
 
-    {/* Input Area */}
-    <div
-      className={`p-4 ${
-        conversation.length === 0
-          ? "absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-full"
-          : "border-t border-base-300"
-      }`}
-    >
-      <div className="flex justify-center">
-        <div className="flex space-x-2 w-[50vw]">
-          <input
-            type="text"
-            className="input input-bordered w-full"
-            placeholder="Enter your query..."
-            value={text}
-            onChange={(e) => setText(e.target.value)}
-            onKeyDown={(e) => e.key === "Enter" && handleSubmit()}
-          />
-          <button
-            onClick={handleSubmit}
-            className={`btn btn-primary ${loading ? "loading" : ""}`}
-          >
-            Send
-          </button>
+      {/* Input Area */}
+      <div
+        className={`p-4 ${
+          conversation.length === 0
+            ? "absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-full"
+            : "border-t border-base-300"
+        }`}
+      >
+        <div className="flex justify-center">
+          <div className="flex space-x-2 w-[50vw]">
+            <input
+              type="text"
+              className="input input-bordered w-full"
+              placeholder="Enter your query..."
+              value={text}
+              onChange={(e) => setText(e.target.value)}
+              onKeyDown={(e) => e.key === "Enter" && handleSubmit()}
+            />
+            <button
+              onClick={handleSubmit}
+              className={`btn btn-primary ${loading ? "loading" : ""}`}
+            >
+              Send
+            </button>
+          </div>
         </div>
       </div>
-    </div>
 
-    {/* Hidden Audio Player */}
-    <audio id="audio-player" controls style={{ display: "none" }}></audio>
-  </div>
+      {/* Hidden Audio Player */}
+      <div className="audio1 mb-5 mx-8">
+        <audio id="audio-player" controls style={{ display: "none" }}></audio>
+      </div>
+    </div>
   );
 }

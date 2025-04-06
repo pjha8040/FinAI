@@ -8,8 +8,12 @@ import ChatBot from "./Pages/ChatBot";
 import Profile from "./Pages/Profile";
 import Logout from "./Pages/Logout";
 import { useState, useEffect } from "react";
+import Pricing from "./Pages/Pricing";
+import Market from "./Pages/Market";
 function App() {
-  const [theme, setTheme] = useState(localStorage.getItem("theme") || "Default");
+  const [theme, setTheme] = useState(
+    localStorage.getItem("theme") || "Default"
+  );
 
   // Apply theme globally
   useEffect(() => {
@@ -20,12 +24,14 @@ function App() {
       <div className="min-h-screen bg-base-100 text-base-content">
         <Routes>
           <Route path="/" element={<HomePage />} />
-          <Route path="/login" element={<Login/>} />
-          <Route path="/signup" element={<Signup/>} />
-          <Route path="/profile" element={<Profile/>} />
-          <Route path="/logout" element={<Logout/>} />
-          <Route path="/preferences" element={<Preferences/>} />
-          <Route path="/chatbot" element={<ChatBot/>} />
+          <Route path="/login" element={<Login />} />
+          <Route path="/signup" element={<Signup />} />
+          <Route path="/profile" element={<Profile />} />
+          <Route path="/logout" element={<Logout />} />
+          <Route path="/preferences" element={<Preferences />} />
+          <Route path="/chatbot" element={<ChatBot />} />
+          <Route path="/pricing" element={<Pricing />} />
+          <Route path="/market" element={<Market />} />
         </Routes>
       </div>
     </Router>
