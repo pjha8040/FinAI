@@ -5,6 +5,8 @@ import Login from "./Pages/Login";
 import Signup from "./Pages/Signup";
 import Preferences from "./Pages/Prefrences";
 import ChatBot from "./Pages/ChatBot";
+import Profile from "./Pages/Profile";
+import Logout from "./Pages/Logout";
 import { useState, useEffect } from "react";
 function App() {
   const [theme, setTheme] = useState(localStorage.getItem("theme") || "Default");
@@ -20,6 +22,8 @@ function App() {
           <Route path="/" element={<HomePage />} />
           <Route path="/login" element={<Login/>} />
           <Route path="/signup" element={<Signup/>} />
+          <Route path="/profile" element={<Profile/>} />
+          <Route path="/logout" element={<Logout/>} />
           <Route path="/preferences" element={<Preferences/>} />
           <Route path="/chatbot" element={<ChatBot/>} />
         </Routes>

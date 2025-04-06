@@ -1,21 +1,23 @@
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
+import Navbar from "./components/Navbar";
 
 const HomePage = () => {
     return (
         <div className="min-h-screen bg-base-100 text-base-content">
             
             {/* Navbar */}
-            <div className="navbar bg-base-200 shadow-md fixed w-full z-10">
+            <Navbar/>
+            {/* <div className="navbar bg-base-200 shadow-md fixed w-full z-10">
                 <div className="container mx-auto px-6 flex justify-between">
                     <Link to="/" className="text-2xl font-bold">ChatBot AI</Link>
                     
                     <div className="flex items-center gap-4">
                         <Link to="#" className="btn btn-ghost">Features</Link>
-                        <Link to="#" className="btn btn-ghost">Pricing</Link>
-                        <Link to="#" className="btn btn-ghost">Contact</Link>
+                        <Link to="#" className="btn btn-ghost">Pricing</Link> 
+                        <Link to="#" className="btn btn-ghost">Contact</Link> 
 
-                        {/* Settings Dropdown */}
+                       
                         <div className="dropdown dropdown-end">
                             <label tabIndex={0} className="btn btn-ghost">
                                 Settings ▼
@@ -30,7 +32,7 @@ const HomePage = () => {
                         <Link to="/login" className="btn btn-primary">Login</Link>
                     </div>
                 </div>
-            </div>
+            </div> */}
 
             {/* Hero Section */}
             <section className="hero min-h-[65vh] flex items-center justify-center text-center">
